@@ -12,7 +12,7 @@
  *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
  *  for the specific language governing permissions and limitations under the License.
- *	
+ *
  *
  *	Changelog:
  *
@@ -30,6 +30,7 @@ metadata {
         capability "Sensor"
         capability "Refresh"
         capability "Polling"
+        capability "Health Check"
 
         command "stop"
         command "levelOpenClose"
@@ -165,7 +166,7 @@ def stop(){
 
 def levelOpenClose(level) {
     log.debug("levelOpenClose (${level})")
-    if (value) {   
+    if (value) {
 	    setLevel(level)
     }
 }
@@ -208,4 +209,8 @@ def setLevel(level) {
 def setLevel(level, rate) {
     log.debug("Set Level (${level}, ${rate})")
 	setLevel(level)
+}
+
+def ping() {
+    // Do nothing for now
 }
